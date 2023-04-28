@@ -435,6 +435,9 @@ const updateTags = (type, tags) => {
         tags.forEach(tag => {
             const newElement = document.createElement(type);
 
+            // TOOLBX change. Make scripts mounted by Helmet execute in-order
+            newElement.async = false;
+
             for (const attribute in tag) {
                 if (tag.hasOwnProperty(attribute)) {
                     if (attribute === TAG_PROPERTIES.INNER_HTML) {
